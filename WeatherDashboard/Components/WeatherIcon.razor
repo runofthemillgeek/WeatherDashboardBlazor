@@ -1,0 +1,20 @@
+﻿@switch (Condition)
+{
+    case "cloudy":<i class="fas fa-cloud ml-2 text-gray-400 text-xl"></i>
+        break;
+    case "windy": <i class="fas fa-wind ml-2 text-gray-400 text-xl"></i>
+        break;
+    case "snowy": <i class="fas fa-snowflake ml-2 text-gray-400 text-xl"></i>
+        break;
+    case "sunny": <i class="fas fa-sun ml-2 text-gray-400 text-xl"></i>
+        break;
+    case "rainy": <i class="fas fa-cloud-showers-heavy ml-2 text-gray-400 text-xl"></i>
+        break;
+    default: <i></i>
+        break;
+}
+
+@code {
+    [Parameter]
+    public string Condition { get; set; } = null;
+}

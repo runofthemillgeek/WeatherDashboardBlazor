@@ -1,0 +1,14 @@
+{
+  "name": "Weather Dashboard",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#ccc",
+  "description": "A simple dashboard showing you weather info for your favorite locations",
+  "icons": [
+    {
+      "src": "images/icon.bmp",
+      "sizes": "512x512",
+      "type": "image/bmp"
+    }
+  ]
+}

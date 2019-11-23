@@ -1,0 +1,16 @@
+﻿@if (Location != null)
+{
+    <div class="card w-48 shadow-md rounded-lg p-6 mb-4">
+        <h2 class="location text-lg text-blue-500 font-semibold">@Location.Name</h2>
+        <div class="info flex items-center">
+            <div class="text-4xl text-gray-600 font-light">@Location.Temperature</div>
+            <div class="unit ml-1 text-sm self-start text-gray-600 font-light">°C</div>
+            <span class="ml-auto"><WeatherIcon Condition="@Location.Condition" /></span>
+        </div>
+    </div>
+}
+
+@code {
+    [Parameter]
+    public Location Location { get; set; } = null;
+}

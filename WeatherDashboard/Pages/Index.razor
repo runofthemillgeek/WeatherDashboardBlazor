@@ -1,0 +1,41 @@
+﻿@page "/"
+@using Services
+@inject IWeatherService WeatherService
+
+<header class="mt-6">
+    <h1 class="max-w-sm mx-auto font-semibold text-4xl text-gray-600 text-center">Weather Dashboard</h1>
+</header>
+
+<main class="mt-8">
+    <div class="add-location-form max-w-sm mx-auto flex">
+        <input @bind="InputText" type="text" class="flex-1 border border-solid border-gray-100 shadow-md rounded-lg px-2 py-1" />
+        <button @onclick="OnAddButtonClick" class="flex-initial w-16 ml-2 bg-blue-500 text-white px-2 py-1 rounded shadow-md">Add</button>
+    </div>
+    <div class="container max-w-lg mx-auto mt-4 flex flex-wrap justify-around">
+        @foreach (var location in locations)
+        {
+            <WeatherCard Location="@location" />
+        }
+    </div>
+</main>
+
+@code {
+    public string InputText { get; set; } = "";
+
+    public Location[] locations = new Location[0];
+    public List<string> searchLocations = new List<string>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        locations = await WeatherService.GetLocations(searchLocations.ToArray());
+    }
+
+    public async Task OnAddButtonClick(MouseEventArgs e)
+    {
+        searchLocations.Add(InputText);
+
+        InputText = "";
+        
+        locations = await WeatherService.GetLocations(searchLocations.ToArray());
+    }
+}
